@@ -83,6 +83,8 @@ app.post('/album', bodyParser.json(), checkToken, isAdmin, (req, res) => {
         name: req.body.name,
         year: req.body.year,
         valor: req.body.valor,
+        recorder: req.body.recorder,
+        tracks: req.body.tracks,
     }
     knex('albums').returning('id').insert(album)
         .then(id => res.status(201).json(id))
@@ -110,6 +112,8 @@ app.put('/album/:id', bodyParser.json(), checkToken, isAdmin, (req, res) => {
         name: req.body.name,
         year: req.body.year,
         valor: req.body.valor,
+        recorder: req.body.recorder,
+        tracks: req.body.tracks,
     }
     knex('albums').where('id', id).update(album)
         .then(album => res.status(200).json(album))
