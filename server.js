@@ -122,6 +122,7 @@ app.put('/album/:id', bodyParser.json(), checkToken, isAdmin, (req, res) => {
     knex('albums').where('id', id).update(album)
         .then(album => res.status(200).json(album))
         .catch(err => {
+            console.log('error', err)
             res.status(500).json({
                 message: 'Erro ao atualizar album - ' + err.message
             })
