@@ -115,6 +115,8 @@ app.put('/album/:id', bodyParser.json(), checkToken, isAdmin, (req, res) => {
         year: req.body.year,
         valor: req.body.valor,
         recorder: req.body.recorder,
+        description: req.body.description,
+        image_url: req.body.image_url,
         tracks: req.body.tracks,
     }
     knex('albums').where('id', id).update(album)
