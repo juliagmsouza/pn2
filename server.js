@@ -69,7 +69,7 @@ let isAdmin = (req, res, next) => {
 }
 
 app.get('/albums', checkToken, (req, res) => {
-    knex.select('*').from('albums')
+    knex.select('id').select('name').select('image_url').from('albums')
         .then(albums => res.status(200).json(albums))
         .catch(err => {
             res.status(500).json({
@@ -179,7 +179,7 @@ app.post('/security/login', (req, res) => {
                     return
                 }
             }
-            res.status(200).json({ message: 'Login ou senha incorretos' })
+            res.status(401).json({ message: 'Login ou senha incorretos' })
         })
         .catch(err => {
             res.status(500).json({
