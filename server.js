@@ -45,7 +45,7 @@ let checkToken = (req, res, next) => {
 
 let isAdmin = (req, res, next) => {
     knex
-        .select('*').from('user').where({ id: req.userId })
+        .select('*').from('users').where({ id: req.userId })
         .then((users) => {
             if (users.length) {
                 let user = users[0]
